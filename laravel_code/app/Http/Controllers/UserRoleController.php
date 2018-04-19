@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\AllUser;
 use DB;
 use Validator;
-
 class UserRoleController extends Controller
 {
     /**
@@ -74,8 +73,9 @@ class UserRoleController extends Controller
     public function edit($id)
     {
         $user = array();
-        $user['role'] = DB::table('user_roles')->find($id);
-        return view('user_role', $user);   
+        $obj = new \App\UserRoles;
+        $user['role'] = $obj->find($id);
+        return view('edit_role', $user);   
     }
 
     /**
@@ -87,7 +87,23 @@ class UserRoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'description' => 'required|max:255'
+        ]);
+        
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }else{
+            $obj = new \App\UserRoles;
+            $obj->name = $request->name;
+            $obj->description = $request->description;
+            $obj->updated_at = date('Y-m-d h:i:s', strtotime('now'));
+            $data = request()->except(['_token']);
+            $obj->where('id', $id)->update($data);
+
+            return view('all_user_role')->with('Status','User role has been updated successfully');
+        } 
     }
 
     /**
@@ -98,7 +114,8 @@ class UserRoleController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('user_roles')->where('id', '=', $id)->delete();
+        $obj = new \App\UserRoles;
+        $obj->where('id', '=', $id)->delete();
         return back()->with('Status','User role has been deleted successfully');
     }
 
@@ -109,7 +126,8 @@ class UserRoleController extends Controller
 
     public function users()
     {
-        $users = DB::table('user_roles')->select('name', 'id')->get();
+        $obj = new \App\UserRoles;
+        $users = $boj->select('name', 'id')->get();
         return view('users', compact('users'));   
     }
 
@@ -117,7 +135,8 @@ class UserRoleController extends Controller
     {
         $data = [];
         $data['title'] = 'User Roles';
-        $data['all_roles'] = DB::table('user_roles')->get();
+        $obj = new \App\UserRoles;
+        $data['all_roles'] = $obj->get();
         return view('all_user_role', $data);   
     }
 
