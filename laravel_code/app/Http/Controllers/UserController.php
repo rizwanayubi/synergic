@@ -132,7 +132,7 @@ class UserController extends Controller
     {
         $data = [];
         $data['title'] = 'Users';
-        $data['users'] = \App\User::select('users.*', 'user_roles.name as role_name')->leftjoin('user_roles', 'user_roles.id', '=', 'users.id')->get();
+        $data['users'] = \App\User::select('users.*', 'user_roles.name as role_name')->leftjoin('user_roles', 'user_roles.id', '=', 'users.role_id')->get();
         return view('users',$data);
     }
 
