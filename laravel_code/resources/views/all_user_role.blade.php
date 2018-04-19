@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="btn-group pull-right m-t-15">
-            <a href="{{url('add_user')}}" type="button" class="btn btn-custom waves-effect waves-light">Add New User</a>
+            <a href="{{url('user_role')}}" type="button" class="btn btn-custom waves-effect waves-light">Add User Role</a>
         </div>
         <h4 class="page-title">{{isset($title)?$title:''}}</h4>
     </div>

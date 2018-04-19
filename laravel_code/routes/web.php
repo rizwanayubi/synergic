@@ -19,8 +19,9 @@ Auth::routes();
 
 Route::get('users', 'UserController@users');
 Route::get('users_form', 'UserController@users_form');
-Route::post('save_user', 'UserController@save_user');
-Route::post('update_user', 'UserController@update_user');
+Route::post('user_submit', 'UserController@store');
+Route::get('edit_user/{id}', 'UserController@edit');
+Route::post('update_user/{id}', 'UserController@update');
 Route::get('delete_user/{id}', 'UserController@destroy');
 
 
@@ -28,12 +29,13 @@ Route::get('add_user', 'UserController@add_user');
 
 
 
-Route::get('user_submit', 'UserController@users');
+
 Route::get('/user_role', 'UserRoleController@user_role')->name('user_role');
 Route::get('/all_user_role', 'UserRoleController@all_user_role');
+Route::post('update/{id}', 'UserRoleController@update');
 
 Route::get('delete_role/{id}', 'UserRoleController@destroy');
-Route::get('edit_role/{id}', 'UserRoleController@edit');
+Route::get('edit/{id}', 'UserRoleController@edit');
 
 Route::post('/user_role', 'UserRoleController@store');
 Route::get('/home', 'HomeController@index')->name('home');
