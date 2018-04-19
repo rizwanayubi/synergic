@@ -1,3 +1,1 @@
 "# synergic" 
-testing
-dsaf
