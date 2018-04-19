@@ -22,6 +22,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>User Role</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -33,12 +34,13 @@
                                 <td>{{$row->id}}</td>
                                 <td>{{ucwords($row->name)}}</td>
                                 <td>{{$row->email}}</td>
+                                <td>{{$row->role_name}}</td>
                                 <td>{{$row->created_at}}</td>
                                 <td>
-                                    <a class="" href="" title="Edit">
+                                    <a class="" href="{{url('edit_user/'.$row->id)}}" title="Edit">
                                         <i class="fa fa-edit fa-2x text-info"></i>
                                     </a>
-                                    <a href="{{url('delete_user'.$row->id)}}" title="Delete">
+                                    <a href="{{url('delete_user/'.$row->id)}}" title="Delete">
                                         <i class="fa fa-trash fa-2x text-danger"></i>
                                     </a>
                                 </td>
