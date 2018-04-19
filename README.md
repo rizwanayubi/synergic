@@ -1,2 +1,1 @@
 "# synergic" 
-"# Danish"
