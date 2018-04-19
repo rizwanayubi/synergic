@@ -32,7 +32,7 @@
                         @foreach($users as $row)
                             <tr>
                                 <td>{{$row->id}}</td>
-                                <td>{{ucwords($row->name)}}</td>
+                                <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->role_name}}</td>
                                 <td>{{$row->created_at}}</td>
