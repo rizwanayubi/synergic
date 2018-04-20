@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Validator;
-use App\JobCategories;
+use App\JobCategory;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -12,7 +12,7 @@ class JobController extends Controller
         $data = [];
         if($request && $request->id != ''){
             $data['title'] = 'Edit Job Category';
-            $data['job'] = \App\JobCategories::find($request->id);
+            $data['job'] = \App\JobCategory::find($request->id);
         }else{
             $data['title'] = 'Add Job Category';
         }
@@ -38,9 +38,9 @@ class JobController extends Controller
             return back()->withErrors($validator)->withInput();
         }else{
             if($request && $request->id != ''){
-                $obj = \App\JobCategories::find($request->id);
+                $obj = \App\JobCategory::find($request->id);
             }else{
-                $obj = new \App\JobCategories;
+                $obj = new \App\JobCategory;
             }
             $obj->title = $request->title;
             $obj->description = $request->description;
@@ -54,10 +54,7 @@ class JobController extends Controller
     {
         $data = [];
         $data['title'] = 'Users';
-        $data['users'] = DB::table('users as u')
-        ->leftjoin('user_roles as r', 'r.id', '=', 'u.role_id')
-        ->select('u.*','r.name as user_role_name')
-        ->get();
-        return view('users.users',$data);
+        $data['users'] = \App\JobCategory::all();
+        return view('job.all_categories',$data);
     }
 }
