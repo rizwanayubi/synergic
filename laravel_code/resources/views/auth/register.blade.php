@@ -1,4 +1,9 @@
-@extends('partials.index') @section('content')
+@extends('partials.index') 
+@section('content')
+
+@section('css')
+@endsection
+
 <div class="text-xs-center m-t-20">
     <a href="#" class="logo">
         <i class="zmdi zmdi-group-work icon-c-logo"></i>
@@ -30,22 +35,22 @@
             <label class="col-sm-4">Company Type</label>
             <div class="col-sm-8">
                 <div class="radio c-input ">
-                    <input name="role_id" id="radio2" value="3" checked="" type="radio">
-                    <label for="radio2">
-                        FMC
+                    <input name="role_id" id="role_id_oam" value="2" checked="" type="radio" class="company_type">
+                    <label for="role_id_oam">
+                        OAM
                     </label>
                 </div>
-                <div class="radio c-input ">
-                    <input name="role_id" id="radio1" value="2" type="radio">
-                    <label for="radio1">
-                        OAM
+                <div  class="radio c-input ">
+                    <input name="role_id" id="role_id_fmc" value="3"  type="radio" class="company_type"> 
+                    <label for="role_id_fmc">
+                        FMC
                     </label>
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div id="fmc_div" class="form-group row"  style="display:none">
             <div class="col-md-12">
-                <select class="select2 form-control select2-multiple" name="job_categories[]" multiple="multiple" data-placeholder="Select Job Categories">
+                <select class="select2 form-control select2-multiple" style="width:100%" name="job_categories[]" multiple="multiple" data-placeholder="Job Categories">
                     @foreach(\App\JobCategory::all() as $category)
                         <option value="{{$category->id}}">{{$category->title}}</option>
                     @endforeach
@@ -95,4 +100,7 @@
         </div>
     </form>
 </div>
+@section('js')
+
+@endsection
 @endsection

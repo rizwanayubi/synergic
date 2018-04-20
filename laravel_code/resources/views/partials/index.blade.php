@@ -8,10 +8,10 @@
     <meta name="author" content="Coderthemes">
 
     <!-- App Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
 
     <!-- App title -->
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} </title>
 
     <!-- Plugins css-->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }} " rel="stylesheet" type="text/css"/>
@@ -58,6 +58,7 @@
 
     <!-- jQuery  -->
     <script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom_script.js') }}"></script>
     <script src="{{ URL::asset('assets/js/tether.min.js') }}"></script>
     <!-- Tether for Bootstrap -->
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }} "></script>
@@ -73,7 +74,19 @@
 
     <script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery-quicksearch/jquery.quicksearch.js') }} "></script>
     <script src="{{ URL::asset('assets/plugins/select2/js/select2.full.min.js') }} " type="text/javascript"></script>
-    <script type="text/javascript" src=" {{ URL::asset('assets/pages/jquery.formadvanced.init.js') }}"></script>    
+    <script type="text/javascript" src=" {{ URL::asset('assets/pages/jquery.formadvanced.init.js') }}"></script>  
+    
+    <script>
+        $('.company_type').click(function (event) {
+            var company_type = $(this).val();
+            //oam
+            if(company_type == 2){
+                $('#fmc_div').hide();
+            }else{
+                $('#fmc_div').show();
+            }
+        });
+    </script>
 
 </body>
 
