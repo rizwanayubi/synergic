@@ -13,10 +13,118 @@
                     </div>
                     <form class="form-horizontal m-t-20" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
+                        <div class="row">
+                            <label class="col-sm-4">Company Type</label>
+                            <div class="col-sm-8">
+                                <div class="radio c-input ">
+                                    <input name="radio" id="radio2" value="fmc" checked=""  type="radio">
+                                    <label for="radio2">
+                                            FMC
+                                    </label>
+                                </div>
+                                <div class="radio c-input ">
+                                    <input name="radio" id="radio1" value="oam" type="radio">
+                                    <label for="radio1">
+                                            OAM
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                                <div class="col-md-12">
+                            <select class="select2 form-control select2-multiple" multiple="multiple" multiple data-placeholder="Select Job Categories">
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="WI">Wisconsin</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <input type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                
+                                @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
 
                             <div class="col-md-12">
-                                <input id="name" type="text" placeholder="Name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input type="text" placeholder="Contact Number" class="form-control" name="number" value="" required >
+
+                                @if ($errors->has('number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
+
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Company Name" class="form-control" name="name" value="{{ old('name') }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -25,23 +133,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                <input id="email" type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
+                        
+                        
                         <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
 
                             <div class="col-md-12">
-                                <input id="password"  placeholder="Password" type="password" class="form-control" name="password" required>
+                                <input placeholder="Password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -50,11 +147,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input id="password-confirm" type="password" placeholder="Confirm Password "  class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
+                        
 
                         <!-- <div class="form-group row">
                             <div class="col-xs-12">
@@ -67,7 +160,7 @@
 
                         <div class="form-group row text-center m-t-10">
                             <div class="col-xs-12">
-                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Join Now</button>
+                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Submit</button>
                             </div>
                         </div>
 

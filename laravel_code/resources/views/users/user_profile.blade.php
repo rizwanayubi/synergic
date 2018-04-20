@@ -41,7 +41,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-8">
-                            <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{old('name')}} {{isset($user->name)?$user->name:''}}"
+                            <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{old('name')}}{{isset($user->name)?$user->name:''}}"
                                 class="form-control">
                         </div>
                     </div>

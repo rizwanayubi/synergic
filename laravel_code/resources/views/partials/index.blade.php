@@ -13,6 +13,8 @@
     <!-- App title -->
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Plugins css-->
+    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }} " rel="stylesheet" type="text/css"/>
     <!-- App CSS -->
     <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
 
@@ -41,6 +43,11 @@
             </div>
         </div>
         <!-- end card-box-->
+        <div class="m-t-20">
+            <div class="text-xs-center">
+                <p class="text-white">Already have account? <a href="#" class="text-white m-l-5"><b>Sign In</b> </a></p>
+            </div>
+        </div>
     </div>
     <!-- end wrapper page -->
 
@@ -50,18 +57,23 @@
     </script>
 
     <!-- jQuery  -->
-    <!-- jQuery  -->
     <script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/tether.min.js') }} assets/js/tether.min.js"></script>
+    <script src="{{ URL::asset('assets/js/tether.min.js') }}"></script>
     <!-- Tether for Bootstrap -->
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }} "></script>
-    <script src="{{ URL::asset('assets/js/waves.js') }} "></script>
+    <script src="{{ URL::asset('assets/js/waves.js') }}"></script>
     <script src="{{ URL::asset(' assets/js/jquery.nicescroll.js') }}"></script>
     <script src=" {{ URL::asset('assets/plugins/switchery/switchery.min.js') }}"></script>
 
     <!-- App js -->
     <script src="{{ URL::asset('assets/js/jquery.core.js') }}"></script>
-    <script src="{{ URL::asset(' assets/js/jquery.app.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/jquery.app.js') }}"></script>
+
+    <script type="text/javascript" src="{{ URL::asset('assets/plugins/multiselect/js/jquery.multi-select.js') }} "></script>
+
+    <script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery-quicksearch/jquery.quicksearch.js') }} "></script>
+    <script src="{{ URL::asset('assets/plugins/select2/js/select2.full.min.js') }} " type="text/javascript"></script>
+    <script type="text/javascript" src=" {{ URL::asset('assets/pages/jquery.formadvanced.init.js') }}"></script>    
 
 </body>
 
