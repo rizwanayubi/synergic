@@ -136,6 +136,4 @@ class UserController extends Controller
         $data['title'] = 'Update Profile';
         return view('users.user_profile', $data);
     }
-
-    
 }

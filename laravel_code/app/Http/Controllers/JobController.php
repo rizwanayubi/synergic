@@ -64,4 +64,5 @@ class JobController extends Controller
         $obj->where('id', '=', $id)->delete();
         return back()->with('status','Record has been deleted successfully');
     }
+
 }
