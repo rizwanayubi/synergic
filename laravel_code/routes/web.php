@@ -41,7 +41,7 @@ Route::get('user_role', 'UserRoleController@user_role');
 /* job routes start*/
 Route::get('jobcat_form', 'JobController@jobcat_form');
 Route::post('jobcat_save', 'JobController@jobcat_save');
-Route::get('all_job_cat', 'JobController@all_job_cat');
+Route::get('categories', 'JobController@categories');
 /* job routes start*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="btn-group pull-right m-t-15">
-            <a href="{{url('all_job_cat')}}" type="button" class="btn btn-custom waves-effect waves-light">Back to Categories</a>
+            <a href="{{url('categories')}}" type="button" class="btn btn-custom waves-effect waves-light">Back to Categories</a>
         </div>
         <h4 class="page-title">{{isset($title)?$title:''}}</h4>
     </div>

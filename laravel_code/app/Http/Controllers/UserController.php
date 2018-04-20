@@ -19,19 +19,23 @@ class UserController extends Controller
         if($request && $request->id != ''){
             $validator = Validator::make($request->all(), [
                 'role_id' => 'required',
-                'name' => 'required|max:255',
                 'email' => 'required|email',
+                'password' => 'required|max:255',
+                'contact_no' => 'required|numeric',
+                'name' => 'required|max:255',
                 'password' => 'required|max:255'
             ]);
         }else{
             $validator = Validator::make($request->all(), [
                 'role_id' => 'required',
-                'name' => 'required|max:255',
                 'email' => 'required|email|unique:users',
+                'password' => 'required|max:255',
+                'contact_no' => 'required|numeric',
+                'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
                 'password' => 'required|max:255'
             ]);
         }
-        
+
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }else{
@@ -40,13 +44,24 @@ class UserController extends Controller
             }else{
                 $obj = new \App\User;
             }
-            
+            $arr_cat = $request->job_categories;
+            $cat = implode(',', $arr_cat);
+
             $obj->role_id = $request->role_id;
             $obj->name = $request->name;
             $obj->email = $request->email;
+            $obj->contact_no = $request->contact_no;
+            $obj->job_categories = $cat;
             $obj->password = Hash::make($request->password);
             $obj->save();
-
+            $last_id = DB::getPdo()->lastInsertId();
+            $data = array(
+                'user_id' => $last_id,
+                'name' => $obj->name,
+                'contact_no' => $obj->contact_no,
+                'job_categories' => $obj->job_categories
+            );
+            $users = DB::table('company')->insert($data);
             return back()->with('status','Record has been saved successfully');
         } 
     }

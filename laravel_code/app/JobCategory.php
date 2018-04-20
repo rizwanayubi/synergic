@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class JobCat extends Model
+class JobCategory extends Model
 {
     //
 }
