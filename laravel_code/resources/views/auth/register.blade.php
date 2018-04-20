@@ -24,7 +24,7 @@
             <h6 class="text-muted text-uppercase m-b-0 m-t-0">Sign Up</h6>
         </div>
     </div>
-    <form class="form-horizontal m-t-20" method="POST" action="{{ url('user_save') }}">
+    <form class="form-horizontal m-t-20" method="POST" action="{{ url('user_registration') }}">
         {{ csrf_field() }}
         <div class="row">
             <label class="col-sm-4">Company Type</label>

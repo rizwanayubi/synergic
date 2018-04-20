@@ -36,7 +36,7 @@
                                 <td>{{$role->id}}</td>
                                 <td>{{ucwords($role->name)}}</td>
                                 <td>{{$role->description}}</td>
-                                <td>{{$role->created_at}}</td>
+                                <td><?php echo date_format(new DateTime($role->created_at), 'jS F Y g:ia');?></td>                                
                                 <td>
                                     <a href="{{url('user_role?id='.$role->id)}}" title="Edit">
                                         <i class="fa fa-edit fa-2x text-info"></i>
