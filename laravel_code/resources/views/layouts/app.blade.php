@@ -45,8 +45,7 @@
                     <!-- LOGO -->
                     <div class="topbar-left">
                         <a href="index.html" class="logo">
-                            <i class="zmdi zmdi-group-work icon-c-logo"></i>
-                            <span>Synergic</span>
+                            <span> <img src="assets/images/logo_login.png" alt="logo" width="60%"></span>
                         </a>
                     </div>
                     <!-- End Logo container-->
