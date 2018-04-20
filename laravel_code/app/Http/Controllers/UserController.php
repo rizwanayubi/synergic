@@ -140,11 +140,14 @@ class UserController extends Controller
         return back()->with('status','Record has been deleted successfully');
     }
 
-    
-
     public function add_user()
     {
         $users = DB::table('user_roles')->select('name', 'id')->get();
         return view('add_user', compact('users'));
+    }
+
+    public function user_profile()
+    {
+        return view('users.user_profile');
     }
 }
