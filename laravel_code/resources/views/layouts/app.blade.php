@@ -110,7 +110,7 @@
                         <!-- Navigation Menu-->
                         <ul class="navigation-menu">
                             <li>
-                                <a href="{{ url('/home') }}"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                                <a href="{{ url('/home') }}"><i class="zmdi zmdi-view-dashboard"></i> <span> Home </span> </a>
                             </li>
                             <li class="has-submenu">
                                 <a href="#">
