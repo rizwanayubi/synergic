@@ -33,7 +33,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" required parsley-type="text" name="title" value="{{old('title')}} {{isset($job->title)?$job->title:''}}" class="form-control"
+                        <input type="text" required parsley-type="text" name="title" value="{{old('title')}}{{isset($job->title)?$job->title:''}}" class="form-control"
                             placeholder="Title">
                     </div>
                 </div>

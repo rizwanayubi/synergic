@@ -77,7 +77,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow profile-dropdown " aria-labelledby="Preview">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="{{url('user_profile')}}" class="dropdown-item notify-item">
                                         <i class="zmdi zmdi-account-circle"></i> <span>Profile</span>
                                     </a>
 
