@@ -1,8 +1,8 @@
 @extends('partials.index') @section('content')
     <div class="text-xs-center m-t-20">
-        <a href="index.html" class="logo">
+        <a href="#" class="logo">
             <i class="zmdi zmdi-group-work icon-c-logo"></i>
-            <span>Uplon</span>
+            <span>Synergic</span>
         </a>
     </div>
     <div class="m-t-10 p-20">
@@ -52,21 +52,6 @@
                 <div class="col-sm-12">
                     <a href="{{ route('password.request') }}" class="text-muted">
                         <i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-                </div>
-            </div>
-            <div class="form-group row m-b-0 text-xs-center">
-                <div class="col-sm-12">
-                    <button type="button" class="btn btn-facebook waves-effect waves-light m-t-20">
-                        <i class="fa fa-facebook m-r-5"></i> Facebook
-                    </button>
-
-                    <button type="button" class="btn btn-twitter waves-effect waves-light m-t-20">
-                        <i class="fa fa-twitter m-r-5"></i> Twitter
-                    </button>
-
-                    <button type="button" class="btn btn-googleplus waves-effect waves-light m-t-20">
-                        <i class="fa fa-google-plus m-r-5"></i> Google+
-                    </button>
                 </div>
             </div>
         </form>
