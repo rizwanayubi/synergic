@@ -94,34 +94,6 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'description' => 'required|max:255'
-        ]);
-        
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }else{
-            $obj = new \App\UserRoles;
-            $obj->name = $request->name;
-            $obj->description = $request->description;
-            $obj->updated_at = date('Y-m-d h:i:s', strtotime('now'));
-            $data = request()->except(['_token']);
-            $obj->where('id', $id)->update($data);
-
-            return view('all_user_role')->with('status','User role has been updated successfully');
-        } 
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -131,7 +103,7 @@ class UserRoleController extends Controller
     {
         $obj = new \App\UserRoles;
         $obj->where('id', '=', $id)->delete();
-        return back()->with('status','Record has been saved successfully');
+        return back()->with('status','Record has been deleted successfully');
     }
 
     public function user_role(Request $request)
