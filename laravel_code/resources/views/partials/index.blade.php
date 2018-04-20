@@ -45,7 +45,7 @@
         <!-- end card-box-->
         <div class="m-t-20">
             <div class="text-xs-center">
-                <p class="text-white">Already have account? <a href="#" class="text-white m-l-5"><b>Sign In</b> </a></p>
+                <p class="text-white">Already have account? <a href="{{url('login')}}" class="text-white m-l-5"><b>Sign In</b> </a></p>
             </div>
         </div>
     </div>

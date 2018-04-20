@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Validator;
-use App\JobCat;
+use App\JobCategory;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -12,7 +12,7 @@ class JobController extends Controller
         $data = [];
         if($request && $request->id != ''){
             $data['title'] = 'Edit Job Category';
-            $data['job'] = \App\JobCat::find($request->id);
+            $data['job'] = \App\JobCategory::find($request->id);
         }else{
             $data['title'] = 'Add Job Category';
         }
@@ -29,7 +29,7 @@ class JobController extends Controller
             ]);
         }else{
             $validator = Validator::make($request->all(), [
-                'title' => 'required|unique:job_cat|max:255',
+                'title' => 'required|unique:job_categories|max:255',
                 'description' => 'required|max:255'
             ]);
         }
@@ -38,9 +38,9 @@ class JobController extends Controller
             return back()->withErrors($validator)->withInput();
         }else{
             if($request && $request->id != ''){
-                $obj = \App\JobCat::find($request->id);
+                $obj = \App\JobCategory::find($request->id);
             }else{
-                $obj = new \App\JobCat;
+                $obj = new \App\JobCategory;
             }
             $obj->title = $request->title;
             $obj->description = $request->description;
@@ -53,8 +53,16 @@ class JobController extends Controller
     public function categories()
     {
         $data = [];
-        $data['title'] = 'Users';
-        $data['users'] = \App\JobCat::all();
-        return view('job.all_categories',$data);
+        $data['title'] = 'Categories';
+        $data['categories'] = \App\JobCategory::all();
+        return view('job.categories',$data);
     }
+
+    public function delete_cat($id)
+    {
+        $obj = new \App\JobCategory;
+        $obj->where('id', '=', $id)->delete();
+        return back()->with('status','Record has been deleted successfully');
+    }
+
 }
