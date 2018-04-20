@@ -25,6 +25,7 @@ Route::get('edit_user/{id}', 'UserController@edit');
 Route::post('update_user/{id}', 'UserController@update');
 Route::get('delete_user/{id}', 'UserController@destroy');
 Route::get('add_user', 'UserController@add_user');
+Route::get('user_profile', 'UserController@user_profile');
 /* User routes end*/
 
 /* User role routes start*/
