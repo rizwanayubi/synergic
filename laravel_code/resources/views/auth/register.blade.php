@@ -1,9 +1,6 @@
 @extends('partials.index') 
 @section('content')
 
-@section('css')
-@endsection
-
 <div class="text-xs-center m-t-20">
     <a href="#" class="logo">
             <span> <img src="assets/images/logo_login.png" alt="logo" width="60%"></span>
@@ -99,7 +96,4 @@
         </div>
     </form>
 </div>
-@section('js')
-
-@endsection
 @endsection
