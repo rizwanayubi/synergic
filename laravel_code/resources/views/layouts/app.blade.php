@@ -122,7 +122,21 @@
                                     <li>
                                         <ul>
                                             <li><a href="{{ url('/users') }}">Users</a></li>
-                                            <li><a href="{{ url('/all_user_role') }}">All User Roles</a></li>
+                                            <li><a href="{{ url('/all_user_role') }}">User Roles</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">
+                                    <i class="zmdi zmdi-format-underlined"></i>
+                                    <span> Job Categories </span>
+                                </a>
+                                <ul class="submenu megamenu">
+                                    <li>
+                                        <ul>
+                                            <li><a href="{{ url('jobcat_form') }}">Categories</a></li>
+                                            <li><a href="{{ url('categories') }}">Add Category</a></li>
                                         </ul>
                                     </li>
                                 </ul>
