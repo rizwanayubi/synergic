@@ -9,7 +9,7 @@
          <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- App Favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
 
         <!-- App title -->
         <title>{{isset($title)?$title:''}} - Admin</title>
@@ -46,7 +46,7 @@
                     <div class="topbar-left">
                         <a href="index.html" class="logo">
                             <i class="zmdi zmdi-group-work icon-c-logo"></i>
-                            <span>Uplon</span>
+                            <span>Synergic</span>
                         </a>
                     </div>
                     <!-- End Logo container-->
@@ -77,7 +77,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow profile-dropdown " aria-labelledby="Preview">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="{{ url('user_profile') }}" class="dropdown-item notify-item">
                                         <i class="zmdi zmdi-account-circle"></i> <span>Profile</span>
                                     </a>
 
@@ -110,7 +110,7 @@
                         <!-- Navigation Menu-->
                         <ul class="navigation-menu">
                             <li>
-                                <a href="index.html"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                                <a href="{{ url('/home') }}"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                             </li>
                             <li class="has-submenu">
                                 <a href="#">
@@ -150,7 +150,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
-                                2018 © Uplon.
+                                2018 © Synergic.
                             </div>
                         </div>
                     </div>
