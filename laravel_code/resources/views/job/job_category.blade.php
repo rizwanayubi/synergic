@@ -8,6 +8,8 @@
         <h4 class="page-title">{{isset($title)?$title:''}}</h4>
     </div>
 </div>
+<div class="row">
+
 <div class="col-sm-12 col-xs-12 col-md-12">
     <div class="card-box">
         <div class="p-20">
@@ -60,5 +62,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
