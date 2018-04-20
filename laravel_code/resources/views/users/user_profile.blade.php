@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="btn-group pull-right m-t-15 m-b-15 ">
-            <a href="{{url('users')}}" type="button" class="btn btn-custom waves-effect waves-light">Back to Users</a>
+            <a href="" type="button" class="btn btn-custom waves-effect waves-light">Go Back</a>
         </div>
         <h4 class="page-title">{{isset($title)?$title:''}}</h4>
     </div>
