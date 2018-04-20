@@ -38,7 +38,7 @@
                                 <td>{{$role->description}}</td>
                                 <td>{{$role->created_at}}</td>
                                 <td>
-                                    <a href="{{url('edit/'.$role->id)}}" title="Edit">
+                                    <a href="{{url('user_role?id='.$role->id)}}" title="Edit">
                                         <i class="fa fa-edit fa-2x text-info"></i>
                                     </a>
                                     <a href="{{url('delete_role/'.$role->id)}}" title="Delete">

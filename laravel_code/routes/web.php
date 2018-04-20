@@ -17,29 +17,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/* User routes start*/
 Route::get('users', 'UserController@users');
-Route::get('users_form', 'UserController@users_form');
-Route::post('user_submit', 'UserController@store');
+Route::get('user_form', 'UserController@user_form');
+Route::post('user_save', 'UserController@user_save');
 Route::get('edit_user/{id}', 'UserController@edit');
 Route::post('update_user/{id}', 'UserController@update');
 Route::get('delete_user/{id}', 'UserController@destroy');
-
-
 Route::get('add_user', 'UserController@add_user');
+/* User routes end*/
 
-
-
-
-Route::get('/user_role', 'UserRoleController@user_role')->name('user_role');
+/* User role routes start*/
 Route::get('/all_user_role', 'UserRoleController@all_user_role');
+Route::post('save_role', 'UserRoleController@save_role');
 Route::post('update/{id}', 'UserRoleController@update');
-
 Route::get('delete_role/{id}', 'UserRoleController@destroy');
 Route::get('edit/{id}', 'UserRoleController@edit');
+Route::get('user_role', 'UserRoleController@user_role');
+/* User role routes end*/
 
-Route::post('/user_role', 'UserRoleController@store');
+/* job routes start*/
+Route::get('jobcat_form', 'JobController@jobcat_form');
+Route::post('jobcat_save', 'JobController@jobcat_save');
+Route::get('all_job_cat', 'JobController@all_job_cat');
+/* job routes start*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

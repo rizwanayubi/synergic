@@ -34,26 +34,40 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function user_save(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'role_id' => 'required',
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|max:255'
-        ]);
+        if($request && $request->id != ''){
+            $validator = Validator::make($request->all(), [
+                'role_id' => 'required',
+                'name' => 'required|max:255',
+                'email' => 'required|email',
+                'password' => 'required|max:255'
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'role_id' => 'required',
+                'name' => 'required|max:255',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|max:255'
+            ]);
+        }
         
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }else{
-            $obj = new \App\User;
+            if($request && $request->id != ''){
+                $obj = \App\User::find($request->id);
+            }else{
+                $obj = new \App\User;
+            }
+            
             $obj->role_id = $request->role_id;
             $obj->name = $request->name;
             $obj->email = $request->email;
             $obj->password = Hash::make($request->password);
             $obj->save();
 
-            return back()->with('Status','User has been added successfully');
+            return back()->with('status','Record has been saved successfully');
         } 
     }
 
@@ -74,6 +88,36 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /* Users
+    -----------------------------------------------------------------------*/
+    public function users()
+    {
+        $data = [];
+        $data['title'] = 'Users';
+        $data['users'] = DB::table('users as u')
+        ->leftjoin('user_roles as r', 'r.id', '=', 'u.role_id')
+        ->select('u.*','r.name as user_role_name')
+        ->get();
+
+        return view('users.users',$data);
+    }
+
+    /* Users
+    -----------------------------------------------------------------------*/
+    public function user_form(Request $request)
+    {
+        $data = [];
+        if($request && $request->id != ''){
+            $data['title'] = 'Edit User';
+            $data['user'] = \App\User::find($request->id);
+            $data['roles'] = DB::table('user_roles')->select('name', 'id')->get();
+        }else{
+            $data['title'] = 'Add User';
+        }
+        return view('users.user_form',$data);
+    }
+
     public function edit($id)
     {
         $user = array();
@@ -81,38 +125,6 @@ class UserController extends Controller
         $user['data'] = $obj->find($id);
         $user['roles'] = DB::table('user_roles')->select('name', 'id')->get();
         return view('edit_user', $user);   
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'role_id' => 'required',
-            'name' => 'required|max:255',
-            'email' => 'required|email',
-            'password' => 'required|max:255'
-        ]);
-        
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }else{
-            $obj = new \App\User;
-            $obj->role_id = $request->role_id;
-            $obj->name = $request->name;
-            $obj->email = $request->email;
-            $obj->password = Hash::make($request->password);
-            $obj->updated_at = date('Y-m-d h:i:s', strtotime('now'));
-            $data = request()->except(['_token']);
-            $obj->where('id', $id)->update($data);
-
-            return view('users')->with('Status','User has been updated successfully');
-        } 
     }
 
     /**
@@ -125,16 +137,10 @@ class UserController extends Controller
     {
         $obj = new \App\User;
         $obj->where('id', '=', $id)->delete();
-        return back()->with('Status','User has been deleted successfully');
+        return back()->with('status','Record has been deleted successfully');
     }
 
-    public function users()
-    {
-        $data = [];
-        $data['title'] = 'Users';
-        $data['users'] = \App\User::select('users.*', 'user_roles.name as role_name')->leftjoin('user_roles', 'user_roles.id', '=', 'users.role_id')->get();
-        return view('users',$data);
-    }
+    
 
     public function add_user()
     {

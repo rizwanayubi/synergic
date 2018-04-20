@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="btn-group pull-right m-t-15">
-            <a href="{{url('add_user')}}" type="button" class="btn btn-custom waves-effect waves-light">Add New User</a>
+            <a href="{{url('user_form')}}" type="button" class="btn btn-custom waves-effect waves-light">Add New User</a>
         </div>
         <h4 class="page-title">{{isset($title)?$title:''}}</h4>
     </div>
@@ -21,8 +21,8 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Role</th>
                         <th>Email</th>
-                        <th>User Role</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -33,11 +33,11 @@
                             <tr>
                                 <td>{{$row->id}}</td>
                                 <td>{{$row->name}}</td>
+                                <td>{{$row->user_role_name}}</td>
                                 <td>{{$row->email}}</td>
-                                <td>{{$row->role_name}}</td>
-                                <td>{{$row->created_at}}</td>
+                                <td><?php echo date_format(new DateTime($row->created_at), 'g:ia jS F Y');?></td>
                                 <td>
-                                    <a class="" href="{{url('edit_user/'.$row->id)}}" title="Edit">
+                                    <a class="" href="{{url('user_form?id='.$row->id)}}" title="Edit">
                                         <i class="fa fa-edit fa-2x text-info"></i>
                                     </a>
                                     <a href="{{url('delete_user/'.$row->id)}}" title="Delete">
