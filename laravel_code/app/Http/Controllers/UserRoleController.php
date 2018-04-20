@@ -34,22 +34,33 @@ class UserRoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function save_role(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255|unique:user_roles',
-            'description' => 'required|max:255'
-        ]);
-        
+        if($request && $request->id != ''){
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:255',
+                'description' => 'required|max:255'
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:255|unique:user_roles',
+                'description' => 'required|max:255'
+            ]);
+        }
+
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }else{
-            $obj = new \App\UserRoles;
+            if($request && $request->id != ''){
+                $obj = \App\UserRoles::find($request->id);
+            }else{
+                $obj = new \App\UserRoles;
+            }
             $obj->name = $request->name;
             $obj->description = $request->description;
             $obj->save();
 
-            return back()->with('Status','User role has been added successfully');
+            return back()->with('status','User role has been added successfully');
         } 
     }
 
@@ -72,10 +83,14 @@ class UserRoleController extends Controller
      */
     public function edit($id)
     {
-        $user = array();
-        $obj = new \App\UserRoles;
-        $user['role'] = $obj->find($id);
-        return view('edit_role', $user);   
+        $data = [];
+        if($request && $request->id != ''){
+            $data['title'] = 'Edit Role';
+            $data['role'] = \App\UserRoles::find($request->id);
+        }else{
+            $data['title'] = 'Add Role';
+        }
+        return view('edit_role', $user);  
     }
 
     /**
@@ -102,7 +117,7 @@ class UserRoleController extends Controller
             $data = request()->except(['_token']);
             $obj->where('id', $id)->update($data);
 
-            return view('all_user_role')->with('Status','User role has been updated successfully');
+            return view('all_user_role')->with('status','User role has been updated successfully');
         } 
     }
 
@@ -116,12 +131,19 @@ class UserRoleController extends Controller
     {
         $obj = new \App\UserRoles;
         $obj->where('id', '=', $id)->delete();
-        return back()->with('Status','User role has been deleted successfully');
+        return back()->with('status','Record has been saved successfully');
     }
 
-    public function user_role()
+    public function user_role(Request $request)
     {
-        return view('user_role');   
+        $data = [];
+        if($request && $request->id != ''){
+            $data['title'] = 'Edit Role';
+            $data['role'] = \App\UserRoles::find($request->id);
+        }else{
+            $data['title'] = 'Add Role';
+        }
+        return view('user_role', $data);  
     }
 
     public function users()
