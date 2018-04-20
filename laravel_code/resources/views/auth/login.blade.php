@@ -54,6 +54,21 @@
                         <i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
                 </div>
             </div>
+            <div class="form-group row m-b-0 text-xs-center">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-facebook waves-effect waves-light m-t-20">
+                        <i class="fa fa-facebook m-r-5"></i> Facebook
+                    </button>
+
+                    <button type="button" class="btn btn-twitter waves-effect waves-light m-t-20">
+                        <i class="fa fa-twitter m-r-5"></i> Twitter
+                    </button>
+
+                    <button type="button" class="btn btn-googleplus waves-effect waves-light m-t-20">
+                        <i class="fa fa-google-plus m-r-5"></i> Google+
+                    </button>
+                </div>
+            </div>
         </form>
     </div>
     <div class="clearfix"></div>
