@@ -57,4 +57,11 @@ class JobController extends Controller
         $data['categories'] = \App\JobCategory::all();
         return view('job.categories',$data);
     }
+
+    public function delete_cat($id)
+    {
+        $obj = new \App\JobCategory;
+        $obj->where('id', '=', $id)->delete();
+        return back()->with('status','Record has been deleted successfully');
+    }
 }
