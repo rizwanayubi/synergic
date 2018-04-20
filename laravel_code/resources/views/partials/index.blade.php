@@ -14,7 +14,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- App CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +23,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-    <script src="assets/js/modernizr.min.js"></script>
+    <script type="text/javascript"  src="{{ URL::asset('assets/js/modernizr.min.js') }}"></script>
 
 </head>
 
@@ -51,17 +51,17 @@
 
     <!-- jQuery  -->
     <!-- jQuery  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/tether.min.js"></script>
+    <script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/tether.min.js') }} assets/js/tether.min.js"></script>
     <!-- Tether for Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/waves.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <script src="assets/plugins/switchery/switchery.min.js"></script>
+    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }} "></script>
+    <script src="{{ URL::asset('assets/js/waves.js') }} "></script>
+    <script src="{{ URL::asset(' assets/js/jquery.nicescroll.js') }}"></script>
+    <script src=" {{ URL::asset('assets/plugins/switchery/switchery.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="assets/js/jquery.core.js"></script>
-    <script src="assets/js/jquery.app.js"></script>
+    <script src="{{ URL::asset('assets/js/jquery.core.js') }}"></script>
+    <script src="{{ URL::asset(' assets/js/jquery.app.js') }}"></script>
 
 </body>
 
