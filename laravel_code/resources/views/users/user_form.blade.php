@@ -10,6 +10,7 @@
     </div>
 </div>
 
+<div class="row">
 
 <div class="col-sm-12 col-xs-12 col-md-12">
     <div class="card-box">
@@ -36,7 +37,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{old('name')}} {{isset($user->name)?$user->name:''}}" class="form-control">
+                        <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{old('name')}}{{isset($user->name)?$user->name:''}}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -44,7 +45,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="email" required parsley-type="email" name="email" value="{{old('email')}} {{isset($user->email)?$user->email:''}}" class="form-control" placeholder="Email">
+                        <input type="email" required parsley-type="email" name="email" value="{{old('email')}}{{isset($user->email)?$user->email:''}}" class="form-control" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -87,5 +88,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
