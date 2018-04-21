@@ -36,7 +36,7 @@
                     <div class="checkbox checkbox-custom">
                         <input type="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}>
                         <label for="checkbox-signup">
-                            Remember me
+                            Remember me 
                         </label>
                     </div>
                 </div>
