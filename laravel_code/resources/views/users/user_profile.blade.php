@@ -12,8 +12,8 @@
 <div class="row">
     <div class="col-sm-12 col-xs-12 col-md-12">
         <div class="card-box">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <div class="p-20">
                         @if(count($errors) > 0)
                         <div class="alert alert-danger">
@@ -34,7 +34,7 @@
                             <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                             
                             <div class="row clearfix">
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="profile_image" class="col-sm-12 form-control-label">Profile Image
                                         <span class="text-danger">*</span>
                                     </label>
@@ -42,7 +42,7 @@
                                         <input type="file" name="profile_image[]" id="filer_input2">
                                     </div>
                                 </div>
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="licence_Image" class="col-sm-12 form-control-label">Licence Image
                                         <span class="text-danger">*</span>
                                     </label>
@@ -53,7 +53,7 @@
                             </div>
                            
                             <div class="form-group row">
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="inputEmail3" class="col-sm-12 form-control-label">Name
                                         <span class="text-danger">*</span>
                                     </label>
@@ -62,7 +62,7 @@
                                             class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="inputEmail3" class="col-sm-12 form-control-label">Email
                                         <span class="text-danger">*</span>
                                     </label>
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="inputEmail3" class="col-sm-12 form-control-label">Billing Address
                                         <span class="text-danger">*</span>
                                     </label>
@@ -82,7 +82,7 @@
                                             class="form-control" placeholder="Billing Address">
                                     </div>
                                 </div>
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="inputEmail3" class="col-sm-12 form-control-label">Office Address
                                         <span class="text-danger">*</span>
                                     </label>
@@ -95,7 +95,7 @@
                             </div>
                            
                             <div class="form-group row">
-                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="hori-pass1" class="col-sm-12 form-control-label">Password
                                         <span class="text-danger">*</span>
                                     </label>
@@ -122,7 +122,7 @@
 
                 </div>
 
-                <div class="col-md-1"></div>
+                <div class="col-md-2"></div>
 
             <div class="clearfix"></div>
         </div>
