@@ -84,9 +84,19 @@
     <script type="text/javascript" src="{{ URL::asset('assets/plugins/password_strength/password_strength_lightweight.js') }}"></script>
     <script>
          $(document).ready(function($) {
-            $("#myThirdPassword").strength_meter({
+            $("#myPassword").strength_meter({
                 strengthMeterClass: 't_strength_meter'
             });
+             // Password div border show/hide
+            $(".chk_password i.zmdi-eye").click(function(){
+                $(".password_text_show").show();
+                $(".password_text_hide").hide();
+            });
+            $(".chk_password  i.zmdi-eye-off").click(function(){
+                $(".password_text_show").hide();
+                $(".password_text_hide").show();
+            });
+
         });
         $('.company_type').click(function (event) {
             var company_type = $(this).val();
