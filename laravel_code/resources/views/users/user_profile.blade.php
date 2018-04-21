@@ -39,7 +39,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-12">
-                                        <input type="file" name="user_file">
+                                        <input type="file" name="user_file" id="filer_input2">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 padding-left-0 padding-right-0">

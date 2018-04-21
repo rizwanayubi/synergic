@@ -38,7 +38,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'password' => 'required|max:255'
         ]);
-        if($request->hasFile('user_file'))
+        if($request->profile)
         {
             $path = $request->user_file->getClientOriginalName(); 
             return $request->file('user_file')->storeAs('public/user_image', $path);
