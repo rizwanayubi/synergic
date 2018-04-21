@@ -12,8 +12,17 @@ $(document).ready(function(){
 
     //Example 2
     $('#filer_input2').filer({
-        limit: 3,
-        maxSize: 3,
+        limit: 1,
+        maxSize: 2,
+        extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+        changeInput: true,
+        showThumbs: true,
+        addMore: true
+    });
+    
+    $('#filer_input3').filer({
+        limit: 1,
+        maxSize: 2,
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
         changeInput: true,
         showThumbs: true,

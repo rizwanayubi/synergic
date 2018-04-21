@@ -20,6 +20,10 @@
         <!-- Switchery css -->
         <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
+        <!-- Jquery filer css -->
+        <link href="assets/plugins/jquery.filer/css/jquery.filer.css" rel="stylesheet" />
+        <link href="assets/plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+
         <!-- App CSS -->
         <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -325,6 +329,11 @@
 
         <!-- Page specific js -->
         <script src="assets/pages/jquery.dashboard.js"></script>
+        <!-- Jquery filer js -->
+        <script src="assets/plugins/jquery.filer/js/jquery.filer.min.js"></script>
+
+        <!-- page specific js -->
+        <script src="assets/pages/jquery.fileuploads.init.js"></script>
 
     </body>
 </html>

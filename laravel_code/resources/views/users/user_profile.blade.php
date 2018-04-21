@@ -32,54 +32,83 @@
                         <form role="form" data-parsley-validate novalidate method="POST" action="{{ url('update_profile/'.Auth::user()->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 form-control-label">Name
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}"
-                                        class="form-control">
+                            
+                            <div class="row clearfix">
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="profile_image" class="col-sm-12 form-control-label">Profile Image
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="file" name="profile_image[]" id="filer_input2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="licence_Image" class="col-sm-12 form-control-label">Licence Image
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="file" name="licence_Image[]" id="filer_input3">
+                                    </div>
                                 </div>
                             </div>
+                           
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 form-control-label">Email
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="email" required parsley-type="email" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}"
-                                        class="form-control" placeholder="Email">
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="inputEmail3" class="col-sm-12 form-control-label">Name
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" required parsley-type="text" placeholder="Name" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}"
+                                            class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 form-control-label">Billing Address
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" required parsley-type="text" name="billing_address" value="{{old('billing_address')}}"
-                                        class="form-control" placeholder="Billing Address">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 form-control-label">Office Address
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" required parsley-type="text" name="office_address" value="{{old('office_address')}}"
-                                        class="form-control" placeholder="Office Address">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="hori-pass1" class="col-sm-2 form-control-label">Password
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <div>
-                                        <input type="password" required parsley-type="password" name="password" class="form-control" placeholder="Password">
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="inputEmail3" class="col-sm-12 form-control-label">Email
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="email" required parsley-type="email" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}"
+                                            class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-8 col-sm-offset-2">
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="inputEmail3" class="col-sm-12 form-control-label">Billing Address
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" required parsley-type="text" name="billing_address" value="{{old('billing_address')}}"
+                                            class="form-control" placeholder="Billing Address">
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="inputEmail3" class="col-sm-12 form-control-label">Office Address
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" required parsley-type="text" name="office_address" value="{{old('office_address')}}"
+                                            class="form-control" placeholder="Office Address">
+                                    </div>
+                                
+                                </div>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <div class="col-sm-5 padding-left-0 padding-right-0">
+                                    <label for="hori-pass1" class="col-sm-12 form-control-label">Password
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <input type="password" required parsley-type="password" name="password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
                                     <button type="submit" class="btn btn-success waves-effect waves-light">
                                         Update
                                     </button>
