@@ -35,7 +35,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" required="required" parsley-type="text" name="name" value="{{old('name')}} {{isset($role->name)?$role->name:''}}" class="form-control" placeholder="Name">
+                        <input type="text" required="required" parsley-type="text" name="name" value="{{old('name')}}{{isset($role->name)?$role->name:''}}" class="form-control" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group row">
