@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 class HomeController extends Controller
@@ -43,6 +44,12 @@ class HomeController extends Controller
             $obj->email = $request->email;
             $obj->password = Hash::make($request->password);
             $obj->save();
+
+            $data = array(
+                'billing_address' => $request->input('billing_address'),
+                'office_address' => $request->input('office_address')
+            ); 
+            DB::table('company')->where('user_id', $request->id)->update($data);
 
             return back()->with('status','Record has been saved successfully');
         }

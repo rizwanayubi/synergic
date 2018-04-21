@@ -51,6 +51,24 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 form-control-label">Billing Address
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-8">
+                                    <input type="text" required parsley-type="text" name="billing_address" value="{{old('billing_address')}}"
+                                        class="form-control" placeholder="Billing Address">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 form-control-label">Office Address
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-8">
+                                    <input type="text" required parsley-type="text" name="office_address" value="{{old('office_address')}}"
+                                        class="form-control" placeholder="Office Address">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="hori-pass1" class="col-sm-2 form-control-label">Password
                                     <span class="text-danger">*</span>
                                 </label>
