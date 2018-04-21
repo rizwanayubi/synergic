@@ -153,18 +153,19 @@ class UserController extends Controller
             $obj->role_id = $request->role_id;
             $obj->name = $request->name;
             $obj->email = $request->email;
-            $obj->contact_no = $request->contact_no;
-            $obj->job_categories = $cat;
             $obj->password = Hash::make($request->password);
             $obj->save();
-            $last_id = DB::getPdo()->lastInsertId();
-            $data = array(
-                'user_id' => $last_id,
-                'name' => $obj->name,
-                'contact_no' => $obj->contact_no,
-                'job_categories' => $obj->job_categories
-            );
-            $users = DB::table('company')->insert($data);
+            if($obj->role_id == 2 || $obj->role_id == 3)
+            {
+                $last_id = DB::getPdo()->lastInsertId();
+                $data = array(
+                    'user_id' => $last_id,
+                    'name' => $obj->name,
+                    'contact_no' => $obj->contact_no,
+                    'job_categories' => $cat,
+                );
+                $users = DB::table('company')->insert($data);
+            }
             return back()->with('status','Record has been saved successfully');
         } 
     }
