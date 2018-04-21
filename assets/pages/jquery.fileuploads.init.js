@@ -17,16 +17,24 @@ $(document).ready(function(){
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
         changeInput: true,
         showThumbs: true,
-        addMore: true
+        addMore: true,
+        captions: {
+            button: "Upload",
+            feedback: "Upload Profile Image",
+        }
     });
-    
+
     $('#filer_input3').filer({
         limit: 1,
         maxSize: 2,
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
         changeInput: true,
         showThumbs: true,
-        addMore: true
+        addMore: true,
+        captions: {
+            button: "Upload",
+            feedback: "Upload Licence Image",
+        }
     });
 
 	//Example 1
