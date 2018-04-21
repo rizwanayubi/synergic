@@ -17,7 +17,8 @@
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }} " rel="stylesheet" type="text/css"/>
     <!-- App CSS -->
     <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
-
+    <!-- password_strength -->
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/password_strength/password_strength.css') }}">
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -78,9 +79,15 @@
 
     <script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery-quicksearch/jquery.quicksearch.js') }} "></script>
     <script src="{{ URL::asset('assets/plugins/select2/js/select2.full.min.js') }} " type="text/javascript"></script>
-    <script type="text/javascript" src=" {{ URL::asset('assets/pages/jquery.formadvanced.init.js') }}"></script>  
-    
+    <script type="text/javascript" src="{{ URL::asset('assets/pages/jquery.formadvanced.init.js') }}"></script>  
+    <!-- password_strength -->
+    <script type="text/javascript" src="{{ URL::asset('assets/plugins/password_strength/password_strength_lightweight.js') }}"></script>
     <script>
+         $(document).ready(function($) {
+            $("#myThirdPassword").strength_meter({
+                strengthMeterClass: 't_strength_meter'
+            });
+        });
         $('.company_type').click(function (event) {
             var company_type = $(this).val();
             //oam

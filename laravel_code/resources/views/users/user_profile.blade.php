@@ -29,7 +29,7 @@
                         </div>
                         @endif
 
-                        <form role="form" data-parsley-validate novalidate method="POST" enctype="multipart/form-data" action="{{ url('update_profile/'.Auth::user()->id) }}">
+                        <form role="form" data-parsley-validate novalidate method="POST" action="{{ url('update_profile/'.Auth::user()->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                             
@@ -38,16 +38,18 @@
                                     <label for="profile_image" class="col-sm-12 form-control-label">Profile Image
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 profile_image">
                                         <input type="file" name="profile_image" id="filer_input2">
+                                        <input class="profile_image_name" name="profile" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 padding-left-0 padding-right-0">
                                     <label for="licence_Image" class="col-sm-12 form-control-label">Licence Image
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 licence_Image">
                                         <input type="file" name="licence_Image" id="filer_input3">
+                                        <input class="licence_Image_name" name="licence" type="hidden" value="">
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +111,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-8">
-                                    <button type="submit" class="btn btn-success waves-effect waves-light">
+                                    <button type="submit" class="profie_update btn btn-success waves-effect waves-light">
                                         Update
                                     </button>
                                     <button type="reset" class="btn btn-danger waves-effect m-l-5">
