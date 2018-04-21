@@ -82,6 +82,11 @@
         </div>
         <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
             <div class="col-md-12">
+            <div class="effects">
+
+                <h2>Customized Style</h2>
+                <div id="myThirdPassword"></div>
+            </div>
                 <input placeholder="Password" type="password" class="form-control" name="password" required> @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>

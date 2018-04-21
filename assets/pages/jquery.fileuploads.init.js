@@ -34,8 +34,17 @@ $(document).ready(function(){
         captions: {
             button: "Upload",
             feedback: "Upload Licence Image",
-        }
+        },
     });
+    // Images name
+    $(".profie_update").click(function(){
+        var licence_Image =  $(".licence_Image .jFiler-item-info .jFiler-item-title").attr("title");
+         $(".licence_Image_name").val(licence_Image);
+         var profile_image =  $(".profile_image .jFiler-item-info .jFiler-item-title").attr("title");
+         $(".profile_image_name").val(profile_image);
+        console.log(profile_image)
+    }); 
+   
 
 	//Example 1
     $("#filer_input1").filer({
