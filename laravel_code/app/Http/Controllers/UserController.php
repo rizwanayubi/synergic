@@ -78,10 +78,10 @@ class UserController extends Controller
         if($request && $request->id != ''){
             $data['title'] = 'Edit User';
             $data['user'] = \App\User::find($request->id);
-            $data['roles'] = DB::table('user_roles')->select('name', 'id')->get();
         }else{
             $data['title'] = 'Add User';
         }
+        $data['roles'] = DB::table('user_roles')->select('name', 'id')->get();
         return view('users.user_form',$data);
     }
 

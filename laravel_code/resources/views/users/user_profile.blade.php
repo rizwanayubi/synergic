@@ -39,7 +39,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-12">
-                                        <input type="file" name="profile_image[]" id="filer_input2">
+                                        <input type="file" name="profile_image" id="filer_input2">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 padding-left-0 padding-right-0">
@@ -47,7 +47,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-12">
-                                        <input type="file" name="licence_Image[]" id="filer_input3">
+                                        <input type="file" name="licence_Image" id="filer_input3">
                                     </div>
                                 </div>
                             </div>
