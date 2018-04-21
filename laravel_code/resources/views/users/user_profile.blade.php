@@ -29,7 +29,7 @@
                         </div>
                         @endif
 
-                        <form role="form" data-parsley-validate novalidate method="POST" action="{{ url('update_profile/'.Auth::user()->id) }}">
+                        <form role="form" data-parsley-validate novalidate method="POST" enctype="multipart/form-data" action="{{ url('update_profile/'.Auth::user()->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                             <div class="form-group row">
