@@ -1,13 +1,9 @@
 @extends('partials.index') 
 @section('content')
 
-@section('css')
-@endsection
-
 <div class="text-xs-center m-t-20">
     <a href="#" class="logo">
-        <i class="zmdi zmdi-group-work icon-c-logo"></i>
-        <span>Synergic</span>
+            <span> <img src="assets/images/logo_login.png" alt="logo" width="60%"></span>
     </a>
 </div>
 <div class="m-t-10 p-20">
@@ -100,7 +96,4 @@
         </div>
     </form>
 </div>
-@section('js')
-
-@endsection
 @endsection
