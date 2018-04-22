@@ -29,7 +29,7 @@
                         </div>
                         @endif
 
-                        <form role="form" data-parsley-validate novalidate method="POST" action="{{ url('update_profile/'.Auth::user()->id) }}">
+                        <form role="form" data-parsley-validate novalidate method="POST" enctype="multipart/form-data" action="{{ url('update_profile/'.Auth::user()->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                             
@@ -39,7 +39,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-12">
-                                        <input type="file" name="user_file" id="filer_input2">
+                                        <input type="file" name="user_image">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 padding-left-0 padding-right-0">
@@ -47,7 +47,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-12">
-                                        <input type="file" name="license_image" id="filer_input3">
+                                        <input type="file" name="licence_image">
                                     </div>
                                 </div>
                             </div>
