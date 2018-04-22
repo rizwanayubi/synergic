@@ -16,6 +16,7 @@ Dependencies:
         defaults = {
             strengthWrapperClass: 'strength_wrapper',
             inputClass: 'strength_input',
+            form_control: 'form-control',
             strengthMeterClass: 'strength_meter',
             toggleButtonClass: 'button_strength',
 
@@ -36,9 +37,9 @@ Dependencies:
 
         //Note. Instead of this you can use templating. I did not want to have addition dependencies.
         this.element.addClass(options.strengthWrapperClass);
-        this.element.append('<input type="password" class="' + options.inputClass + '" "/>');
-        this.element.append('<input type="text" class="' + options.inputClass + '" style="display:none"/>');
-        this.element.append('<a href="" class="' + options.toggleButtonClass + '">' + options.showPasswordText + '</a>');
+        this.element.append('<div class="password_input password_text_hide"><input  type="password" name="password" placeholder="Password"  class="'+ options.form_control +' ' + options.inputClass + '"/><span><a href="" class="chk_password"><i class="zmdi zmdi-eye"></i></a></span></div>');
+        this.element.append('<div class="password_input password_text_show" style="display:none"><input type="text"  placeholder="Password"  class=" '+ options.form_control +' ' + options.inputClass + '"   style="display:none"/><span><a href="" class="chk_password"><i class="zmdi zmdi-eye-off"></i></a></span></div>');
+        // this.element.append('<a href="" class="' + options.toggleButtonClass + '">' + options.showPasswordText + '</a>');
         this.element.append('<div class="' + options.strengthMeterClass + '"><div><p></p></div></div>');
         this.element.append(
             '<div class="pswd_info" style="display: none;"> \
@@ -54,8 +55,8 @@ Dependencies:
         //this object contain all main inner elements which will be used in strength meter.
         this.content = {};
 
-        this.content.$textInput = this.element.find('input[type="text"]');
-        this.content.$passwordInput = this.element.find('input[type="password"]');
+        this.content.$textInput = this.element.find('.password_input input[type="text"]');
+        this.content.$passwordInput = this.element.find('.password_input input[type="password"]');
         this.content.$toggleButton = this.element.find('a');
         this.content.$pswdInfo = this.element.find('.pswd_info');
         this.content.$strengthMeter = this.element.find("." + options.strengthMeterClass);
@@ -78,7 +79,7 @@ Dependencies:
             $(event.target).text(text);
         });
     },
-
+   
     //Toggle active inputs.
     Plugin.prototype._toggle_input = function($element){
         $element.toggle();
