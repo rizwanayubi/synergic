@@ -32,7 +32,6 @@ class HomeController extends Controller
 
     public function update_profile(Request $request, $id)
     {
-        include('assets/plugins/jquery.filer/php/class.uploader.php');
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'email' => 'required|email',
