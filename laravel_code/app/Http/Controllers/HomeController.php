@@ -75,8 +75,8 @@ class HomeController extends Controller
         $data['title'] = "User Profile";
         $id = Input::get('id');
         $data['profile'] = \App\User::find($id);
-        $data['role'] = DB::table('user_roles')->where('id', '=', $data['profile']['role_id'])->select('name as role')->first();
-        $data['company'] = DB::table('company')->where('user_id', '=', $id)->first();
+        $data['role'] = DB::table('user_roles')->where('id', $data['profile']['role_id'])->select('name as role')->first();
+        $data['company'] = DB::table('company')->where('user_id',$id)->first();
         $data['categories'] = \App\JobCategory::get();
         return view('users.complete_profile', $data);
     }

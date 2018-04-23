@@ -5,12 +5,15 @@
         <div class="btn-group pull-right m-t-15">
             <a href="{{url('user_form')}}" type="button" class="btn btn-custom waves-effect waves-light">Add New User</a>
         </div>
-        <h4 class="page-title">{{isset($title)?$title:''}}</h4>
+        <h4 class="page-title">{{isset($title)?$title:'User Profile'}}</h4>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user.png') }}" alt="Image" />
+        <div clss="col-sm-12">
+            <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user.png') }}" alt="Image" />
+            <h4>Rizwan Khan</h4>
+        </div>
         <div class="card-box table-responsive">
             <h5>User Information</h5>
             <hr>
@@ -43,8 +46,7 @@
             <div class="col-sm-6">
                 <p>Company License</p>
                 <p></p>
-                <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user.png') }}"
-                    alt="Image" />
+                <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user.png') }}" alt="Image" />
                 </p>
             </div>
         </div>

@@ -1,78 +1,99 @@
 @extends('layouts.app') @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-7 ">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>{{$title}}</h4>
-                </div>
-                <div class="panel-body">
-                    <div class="box box-info">
-                        <div class="box-body">
-                            <div class="col-sm-6">
-                                <div align="center">
-                                    <img class="img" width="150" height="150" src="{{ asset('laravel_code/storage/app/public/user_image/'.$profile->image) }}" alt="{{ $profile->image }}" /> 
-                                    <!--Upload Image Js And Css-->
-                                </div>
-                                <br>
-                                <!-- /input-group -->
-                            </div> 
-                            @if(isset($profile))
-                            <div class="col-sm-6">
-                                <h4 style="color:#00b1b1;">{{$profile->name}}</h4>
-                                @if(isset($role))
-                                <span>
-                                    <p>{{$role->role}}</p>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr style="margin:5px 0 5px 0;">
-                            <div class="col-sm-5 col-xs-6 tital">Full Name:</div>
-                            <div class="col-sm-7 col-xs-6 ">{{$profile->name}}</div>
 
+@section('css')
+<style>
+#profile_image{
+    border: 2px solid rgb(167, 164, 164);
+}
+</style>
+@endsection
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-15">
+            <a href="{{url('users')}}" type="button" class="btn btn-custom waves-effect waves-light">Go Back</a>
+        </div>
+        <h4 class="page-title">{{isset($title)?$title:''}}</h4>
+    </div>
+</div>
 
-                            <div class="col-sm-5 col-xs-6 tital">Email:</div>
-                            <div class="col-sm-7">{{$profile->email}}</div>
-
-
-                            <div class="col-sm-5 col-xs-6 tital">Date Of Joining:</div>
-                            <div class="col-sm-7"><?php echo date_format(new DateTime($profile->created_at), 'jS F Y g:ia');?></div>
-                            @endif
-                            @if(isset($company))
-
-                            <div class="col-sm-5 col-xs-6 tital">Company:</div>
-                            <div class="col-sm-7">{{$company->name}}</div>
-                            <div class="col-sm-5 col-xs-6 tital">Job Categories:</div>
-                            <div class="col-sm-7">
-                                <?php 
-                                $cats = $company->job_categories; //job categories IDs in string separating with comma
-                                $catarray = explode(',', $cats); //Make categories an array
-                                $i=0;
-                                if(isset($categories)):
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card-box table-responsive">
+            <table id="datatable" class="table">
+                <tr>
+                    <th style="text-align:center;">{{$profile->name}}</th>
+                </tr>
+                <tr>
+                    <td style="text-align:center;" class="user-image">
+                        <img id="profile_image" class="img-thumbnail" width="200" height="200" src="{{ asset('laravel_code/storage/app/public/user_image/'.$profile->image) }}"
+                            alt="{{ $profile->image }}" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="card-box table-responsive">
+            <table id="datatable" class="table table-striped table-bordered">
+                @if(isset($profile))
+                <tr>
+                    <th>Name</th>
+                    <td>{{$profile->name}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{$profile->email}}</td>
+                </tr>
+                <tr>
+                    <th>Date Of Joining</th>
+                    <td>
+                        <?php echo date_format(new DateTime($profile->created_at), 'jS F Y g:ia');?>
+                    </td>
+                </tr>
+                @endif
+                @if(isset($company))
+                <tr>
+                    <th>Company</th>
+                    <td>{{$company->name}}</td>
+                </tr>
+                <tr>
+                    <?php 
+                    $cats = $company->job_categories; //job categories IDs in string separating with comma
+                    $catarray = explode(',', $cats); //Make categories an array
+                    $i=0;
+                ?>
+                    <tr>
+                        <th>Job Categories</th>
+                        <td>
+                            <?php 
+                            if(isset($categories)):
                                 foreach($categories as $category): //compare all categories IDs with User category IDs
-                                    if($category->id == $catarray[$i]):?>
-                                        {{$category->title . " ,"}}
-                                <?php endif; $i++; endforeach; endif;?>
-                            </div> 
-                            <div class="col-sm-5 col-xs-6 tital">Contact No:</div>
-                            <div class="col-sm-7">{{$company->contact_no}}</div>
-
-                            <div class="col-sm-5 col-xs-6 tital">Office Address:</div>
-                            <div class="col-sm-7">{{$company->office_address}}</div>
-
-                            <div class="col-sm-5 col-xs-6 tital">Billing Address:</div>
-                            <div class="col-sm-7">{{$company->billing_address}}</div>
-
-                            <div class="col-sm-5 col-xs-6 tital">Company License:</div>
-                            <img class="img" width="150" height="150" src="{{ asset('laravel_code/storage/app/public/company_image/'.$company->license) }}" alt="{{ $company->license }}" />                             
-                            @endif
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-                    </div>
-                </div>
-            </div>
+                                     if($category->id == $catarray[$i]):?> {{$category->title . " ,"}}
+                            <?php endif; $i++; endforeach; endif;?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Contact No</th>
+                        <td>{{$company->contact_no}}</td>
+                    </tr>
+                    <tr>
+                        <th>Office Address</th>
+                        <td>{{$company->office_address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Billing Address</th>
+                        <td>{{$company->billing_address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Company License</th>
+                        <td>
+                            <img class="img-thumbnail" width="100" height="100" src="{{ asset('laravel_code/storage/app/public/company_image/'.$company->license) }}"
+                                alt="{{ $company->license }}" />
+                        </td>
+                    </tr>
+                    @endif
+            </table>
         </div>
     </div>
 </div>
