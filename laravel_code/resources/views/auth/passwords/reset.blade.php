@@ -1,4 +1,4 @@
-@extends('partials.index')
+@extends('layouts.index')
 
 @section('content')
 

@@ -46,10 +46,10 @@
         <!-- end card-box-->
         <div class="m-t-20">
             <div class="text-xs-center">
-                @if(Request::segment(1) == 'login')
-                <p class="text-white">Don't have account? <a href="{{url('register')}}" class="text-white m-l-5"><b>Register</b> </a></p>
-                @else
+                @if(Request::segment(1) == 'register')
                 <p class="text-white">Already have account? <a href="{{url('login')}}" class="text-white m-l-5"><b>Sign In</b> </a></p>
+                @else                
+                <p class="text-white">Don't have account? <a href="{{url('register')}}" class="text-white m-l-5"><b>Register</b> </a></p>
                 @endif
             </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('partials.index') 
+@extends('layouts.index') 
 @section('content')
 
 <div class="text-xs-center m-t-20">

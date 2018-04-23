@@ -28,6 +28,8 @@ Route::get('add_user', 'UserController@add_user');
 Route::get('user_profile', 'UserController@user_profile');
 Route::post('update_profile/{id}', 'HomeController@update_profile');
 Route::post('user_registration', 'UserController@user_registration');
+Route::get('show_profile', 'HomeController@show_profile');
+Route::get('demo', 'HomeController@demo');
 /* User routes end*/
 
 /* User role routes start*/

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
@@ -117,6 +117,7 @@ class UserController extends Controller
     {
         $data = [];
         $data['title'] = 'Update Profile';
+        $data['company'] = DB::table('company') ->where('user_id', '=', Auth::user()->id)->first();
         return view('users.user_profile', $data);
     }
 

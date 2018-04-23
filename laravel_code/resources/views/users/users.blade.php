@@ -9,9 +9,9 @@
     </div>
 </div>
 @if(\Session::has('status'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('status')}}</p>
-    </div>
+<div class="alert alert-success">
+    <p>{{ \Session::get('status')}}</p>
+</div>
 @endif
 <div class="row">
     <div class="col-sm-12">
@@ -20,6 +20,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Role</th>
                         <th>Email</th>
@@ -28,25 +29,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(isset($users) && count($users)>0) 
-                        @foreach($users as $row)
-                            <tr>
-                                <td>{{$row->id}}</td>
-                                <td>{{ucwords($row->name)}}</td>
-                                <td>{{$row->user_role_name}}</td>
-                                <td>{{$row->email}}</td>
-                                <td><?php echo date_format(new DateTime($row->created_at), 'jS F Y g:ia');?></td>
-                                <td>
-                                    <a class="" href="{{url('user_form?id='.$row->id)}}" title="Edit">
-                                        <i class="fa fa-edit fa-2x text-info"></i>
-                                    </a>
-                                    <a href="{{url('delete_user/'.$row->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" title="Delete">
-                                        <i class="fa fa-trash fa-2x text-danger"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach 
-                    @endif
+                    @if(isset($users) && count($users)>0) @foreach($users as $row)
+                    <tr>
+                        <td>{{$row->id}}</td>
+                        <td>
+                            @if(isset($row->image))
+                                <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user_image/'.$row->image) }}" alt="{{ $row->image }}" /> 
+                            @else
+                                <img class="img" width="50" height="50" src="{{ asset('laravel_code/storage/app/public/user.png') }}" alt="{{ $row->image }}" /> 
+                            @endif
+                        </td>
+                        <td><a href="show_profile?id={{$row->id}}">{{ucwords($row->name)}}</a> </td>
+                        <td>{{$row->user_role_name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>
+                            <?php echo date_format(new DateTime($row->created_at), 'jS F Y g:ia');?>
+                        </td>
+                        <td>
+                            <a class="" href="{{url('user_form?id='.$row->id)}}" title="Edit">
+                                <i class="fa fa-edit fa-2x text-info"></i>
+                            </a>
+                            <a href="{{url('delete_user/'.$row->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" title="Delete">
+                                <i class="fa fa-trash fa-2x text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach @endif
                 </tbody>
             </table>
         </div>
