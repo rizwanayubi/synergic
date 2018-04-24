@@ -46,6 +46,11 @@ Route::get('jobcat_form', 'JobController@jobcat_form');
 Route::post('jobcat_save', 'JobController@jobcat_save');
 Route::get('categories', 'JobController@categories');
 Route::get('delete_cat/{id}', 'JobController@delete_cat');
-/* job routes start*/
+/* job categorey routes start*/
+
+/* job category routes start*/
+Route::get('job_form', 'JobController@job_form');
+Route::post('save_job', 'JobController@save_job');
+/* job category routes start*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -29,6 +29,7 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users',
                 'password' => 'required|max:255',
                 'name' => 'required|max:255',
+                'account_status' => 0,
             ]);
         }
 
