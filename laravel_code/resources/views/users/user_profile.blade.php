@@ -17,7 +17,7 @@
                 <!-- <div class="col-md-2"></div> -->
                 <div class="col-md-12">
                     <div class="p-10">
-                            <h4 class="header-title m-t-0 m-b-15">Personal information</h4>
+                        <h4 class="header-title m-t-0 m-b-15">Personal information</h4>
                         @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul style="text-decoration: none;">
@@ -31,11 +31,7 @@
                             <p>{{ \Session::get('status')}}</p>
                         </div>
                         @endif
-
                         <input type="hidden" name="id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
-
-
-
                         <div class="form-group row">
                             <div class="col-sm-6 padding-left-0 padding-right-0">
                                 <label for="inputEmail3" class="col-sm-12 form-control-label">Name
@@ -56,7 +52,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-sm-6 padding-left-0 padding-right-0">
                                 <label for="hori-pass1" class="col-sm-12 form-control-label">Password
@@ -68,7 +63,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row clearfix">
                             <div class="col-sm-6 padding-left-0 padding-right-0">
@@ -79,35 +73,35 @@
                                     <input type="file" name="user_image">
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 padding-left-0 padding-right-0">
+                                <div class="col-sm-12">
+                                    <img class="img" width="150" height="150" src="{{ asset( 'laravel_code/storage/app/public/user_image/' . Auth::user()->image) }}"
+                                        alt="{{ Auth::user()->image }}" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-
                 <!-- <div class="col-md-2"></div> -->
-
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
-
         <div class="col-sm-12 col-xs-12 col-md-6">
             <div class="card-box">
                 <!-- <div class="col-md-2"></div> -->
                 <div class="col-md-12">
                     <div class="p-10">
-                            <h4 class="header-title m-t-0 m-b-15">Other details</h4>
-
-
+                        <h4 class="header-title m-t-0 m-b-15">Other details</h4>
                         <div class="form-group row">
                             <div class="col-sm-6 padding-left-0 padding-right-0">
                                 <label for="inputEmail3" class="col-sm-12 form-control-label">Billing Address
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-12">
-                                    <input type="text" required parsley-type="text" name="billing_address" value="{{old('billing_address')}}" class="form-control"
+                                    <input type="text" required parsley-type="text" name="billing_address" value="{{old('billing_address')}}{{isset($company->billing_address)?$company->billing_address:''}}" class="form-control"
                                         placeholder="Billing Address">
                                 </div>
                             </div>
@@ -116,15 +110,12 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-12">
-                                    <input type="text" required parsley-type="text" name="office_address" value="{{old('office_address')}}" class="form-control"
+                                    <input type="text" required parsley-type="text" name="office_address" value="{{old('office_address')}}{{isset($company->office_address)?$company->office_address:''}}" class="form-control"
                                         placeholder="Office Address">
                                 </div>
-
                             </div>
                         </div>
-
                         <div class="row clearfix">
-
                             <div class="col-sm-6 padding-left-0 padding-right-0 m-b-15">
                                 <label for="licence_Image" class="col-sm-12 form-control-label">Licence Image
                                     <span class="text-danger">*</span>
@@ -134,20 +125,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 padding-left-0 padding-right-0">
+                                <div class="col-sm-12">
+                                    <img class="img" width="150" height="150" src="{{ asset( 'laravel_code/storage/app/public/company_image/' . $company->license) }}"
+                                        alt="{{ $company->license }}" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
-
                 <!-- <div class="col-md-2"></div> -->
-
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
-
         <div class="col-sm-12 col-xs-12 col-md-12">
-
             <div class="form-group row">
                 <div class="col-sm-8">
                     <button type="submit" class="profie_update btn btn-success waves-effect waves-light">

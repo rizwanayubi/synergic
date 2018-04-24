@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Input;
 use DB;
 use Validator;
 use UploadServiceProvider\Uploader;
@@ -46,7 +47,6 @@ class HomeController extends Controller
             if($request->hasFile('user_image'))
             {
                 $user_image = $request->user_image->getClientOriginalName(); 
-                
                 $request->file('user_image')->storeAs('public/user_image', $user_image);
                 $obj->image = $user_image;
             }
@@ -68,7 +68,21 @@ class HomeController extends Controller
             return back()->with('status','Record has been saved successfully');
         }
     }
-    
 
+    public function show_profile()
+    {
+        $data = [];
+        $data['title'] = "User Profile";
+        $id = Input::get('id');
+        $data['profile'] = \App\User::find($id);
+        $data['role'] = DB::table('user_roles')->where('id', $data['profile']['role_id'])->select('name as role')->first();
+        $data['company'] = DB::table('company')->where('user_id',$id)->first();
+        $data['categories'] = \App\JobCategory::get();
+        return view('users.complete_profile', $data);
+    }
 
+    public function demo()
+    {
+        return view('users.demo');
+    }
 }
