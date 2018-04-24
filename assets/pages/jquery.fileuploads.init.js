@@ -42,7 +42,7 @@ $(document).ready(function(){
          $(".licence_Image_name").val(licence_Image);
          var profile_image =  $(".profile_image .jFiler-item-info .jFiler-item-title").attr("title");
          $(".profile_image_name").val(profile_image);
-        // console.log(profile_image) 
+        // console.log(profile_image)  
     }); 
    
 
