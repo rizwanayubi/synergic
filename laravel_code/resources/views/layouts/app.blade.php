@@ -215,12 +215,15 @@
                                 <div class="dropdown-item noti-title">
                                     <h5 class="text-overflow">
                                         <small>Welcome ! 
-                                            isset(Auth::user()->name)?Auth::user()->name:''</small>
+                                            @if(isset(Auth::user()->name))
+                                                {{Auth::user()->name}} : {{'Admin'}}
+                                            @endif
+                                        </small>
                                     </h5>
                                 </div>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{url('user_profile')}}" class="dropdown-item notify-item">
                                     <i class="zmdi zmdi-account-circle"></i>
                                     <span>Profile</span>
                                 </a>
@@ -238,25 +241,21 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{url('logout')}}" class="dropdown-item notify-item">
                                     <i class="zmdi zmdi-power"></i>
-                                    <span>Logout</span>
+                                    <span class="logout">Logout</span>
                                 </a>
 
                             </div>
                         </li>
                     </ul>
-
                 </div>
                 <!-- end menu-extras -->
                 <div class="clearfix"></div>
-
             </div>
             <!-- end container -->
         </div>
         <!-- end topbar-main -->
-
-
         <div class="navbar-custom">
             <div class="container">
                 <div id="navigation">
@@ -295,10 +294,10 @@
                                 <li>
                                     <ul>
                                         <li>
-                                            <a href="{{ url('jobcat_form') }}">Categories</a>
+                                            <a href="{{ url('categories') }}">Categories</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('categories') }}">Add Category</a>
+                                            <a href="{{ url('jobcat_form') }}">Add Category</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -491,12 +490,6 @@
     <!-- End wrapper -->
 
 
-
-
-    <script>
-        var resizefunc = [];
-    </script>
-
     <!-- jQuery  -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/tether.min.js"></script>
@@ -525,6 +518,17 @@
 
     <!-- page specific js -->
     <script src="assets/pages/jquery.fileuploads.init.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var resizefunc = [];
+            $(document).on('click', '.logout', function(){
+                var url = "{{ URL::to('/logout') }}";
+                location.replace(url);
+            });
+        });
+
+    </script>
 
 </body>
 

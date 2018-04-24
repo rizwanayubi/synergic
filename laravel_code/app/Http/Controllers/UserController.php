@@ -5,6 +5,7 @@ use Auth;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
+use Mail;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -14,6 +15,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth', ['except' => ['email_varification']);
+    }
+
     public function user_save(Request $request)
     {
         if($request && $request->id != ''){
@@ -29,6 +41,7 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users',
                 'password' => 'required|max:255',
                 'name' => 'required|max:255',
+                'account_status' => 0,
             ]);
         }
 
@@ -123,6 +136,7 @@ class UserController extends Controller
 
     public function user_registration(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'role_id' => 'required',
             'email' => 'required|email|unique:users',
@@ -132,6 +146,7 @@ class UserController extends Controller
         ]);
         
         if ($validator->fails()) {
+            // dd($validator->fails());
             return back()->withErrors($validator)->withInput();
         }else{
             $obj = new \App\User;
@@ -154,8 +169,37 @@ class UserController extends Controller
                 $arr_cat = $request->job_categories;
                 $data['job_categories'] = implode(',', $arr_cat);
             }
+
             $users = DB::table('company')->insert($data);
+
+            /* Two Factor Authentication Email */
+            $data = [
+                'email' => $request->input('email'),
+                'password' => $request->input('password'),
+            ];
+            // dd(env('COMPANY_EMAIL'));
+            Mail::send('emails.two_factor_varification',$data, function ($message) use ($data){
+                $message->from(env('COMPANY_EMAIL_ADDRESS'),'Synergic');
+                $message->to($data['email']);
+                $message->subject('Account Varification');
+            });
+
             return back()->with('status','Record has been saved successfully');
         } 
+    }
+
+    public function email_varification(Request $req){
+        $updateEmailVarification = \App\User::where('email',$req->input('email'))->update(['two_factor_auth' => 1]);
+
+        /* Login to Account After Varification */
+        $user = [
+            'email' => $req->input('email'),
+            'password' => $req->input('password')
+        ];
+
+        if (Auth::attempt(['email' => $req->input('email'), 'password' => $req->input('password'), 'two_factor_auth' => 1])) {
+            return redirect('/home');
+        }
+
     }
 }
