@@ -54,3 +54,6 @@ Route::post('save_job', 'JobController@save_job');
 /* job category routes start*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+/* General Routes Without Authentication */
+Route::post('/signup/email/varification','UserController@email_varification');
