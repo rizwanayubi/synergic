@@ -23068,3 +23068,15 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
 .padding-left-0 {
   padding-left:0px;
 }
+.company_image{
+  padding-bottom: 10px;
+}
+.left{
+  float: left !important;
+}
+.right{
+  float: right; 
+}
+.primary_border_top{
+  border-top: #3db9dc 2px solid;
+}
