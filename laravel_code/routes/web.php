@@ -49,3 +49,6 @@ Route::get('delete_cat/{id}', 'JobController@delete_cat');
 /* job routes start*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+/* General Routes Without Authentication */
+Route::post('/signup/email/varification','UserController@email_varification');

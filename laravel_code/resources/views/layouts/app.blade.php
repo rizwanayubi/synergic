@@ -240,7 +240,7 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="zmdi zmdi-power"></i>
-                                    <span>Logout</span>
+                                    <span class="logout">Logout</span>
                                 </a>
 
                             </div>
@@ -491,12 +491,6 @@
     <!-- End wrapper -->
 
 
-
-
-    <script>
-        var resizefunc = [];
-    </script>
-
     <!-- jQuery  -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/tether.min.js"></script>
@@ -525,6 +519,17 @@
 
     <!-- page specific js -->
     <script src="assets/pages/jquery.fileuploads.init.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var resizefunc = [];
+            $(document).on('click', '.logout', function(){
+                var url = "{{ URL::to('/logout') }}";
+                location.replace(url);
+            });
+        });
+
+    </script>
 
 </body>
 
